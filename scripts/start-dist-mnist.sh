@@ -15,10 +15,10 @@
 # limitations under the License.
 
 ver=$(sudo pip list | grep -E '^tensorflow \(' | grep -oE '[0-9]+\.[0-9]+')
-if [[ $ver != '1.2' ]]; then
+if [[ $ver == '1.2' ]]; then
   echo "TF${ver} currently has a compatibility issue with the prediction API."
   echo "Downgrading to TF1.2.1 as a tentative workaround..."
-  sudo pip install tensorflow-gpu==1.2.1
+  sudo pip install tensorflow-gpu -U
 fi
 
 cd $(dirname $0)
